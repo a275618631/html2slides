@@ -1,0 +1,43 @@
+# html2slides configuration example
+
+[deck]
+# Selector used to identify each slide container in HTML
+slide_selector = ".slide-container"
+# Target presentation canvas dimension in inches (Default: 16:9 widescreen = 13.333 x 7.5)
+width_in = 13.333
+height_in = 7.5
+
+[fonts]
+# Mode: "preserve" (keep computed CSS font), "override" (force default for all), "map" (use font mapping)
+mode = "preserve"
+# Fallback / override default font
+default = "Noto Sans TC"
+
+[fonts.map]
+"Segoe UI" = "Noto Sans TC"
+"Arial" = "Noto Sans TC"
+"Inter" = "Noto Sans TC"
+"-apple-system" = "Noto Sans TC"
+"BlinkMacSystemFont" = "Noto Sans TC"
+"Helvetica Neue" = "Noto Sans TC"
+
+# Optional CSS Overrides injected prior to extraction
+[[overrides]]
+selector = ".kicker"
+font_size_pt = 14.0
+font_weight = 800
+
+[[overrides]]
+selector = ".takeaway-bar"
+font_size_pt = 16.0
+font_weight = 700
+
+[security]
+# Disallow remote image/font URLs unless explicitly permitted
+allow_network = false
+# Strip <script> and inline event handlers
+allow_javascript = false
+
+[google_slides]
+# Google Drive destination folder ID (optional)
+# drive_folder_id = "your-folder-id-here"

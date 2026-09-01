@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Output & Temp Files
+output/
+*.pptx
+!examples/**/*.pptx
+conversion_report.json
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Google OAuth Credentials & Tokens (Strict Security)
+credentials*.json
+token*.json
+.env
+.env.*
+client_secret*.json
+
+# OS specific
+.DS_Store
+Thumbs.db

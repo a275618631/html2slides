@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Corning 76964 — Applied AI Solution Architect Interview Deck</title>
+<style>
+  :root {
+    --bg-page: #0f172a;
+    --slide-bg: #f8fafc;
+    --card-bg: #ffffff;
+    --primary-blue: #00529b;
+    --blue-tint: #eef4fb;
+    --text-primary: #1e293b;
+    --text-secondary: #475467;
+    --border-line: #cbd5e1;
+    --amber-accent: #c2410c;
+    --amber-tint: #fff7ed;
+    --green-accent: #166534;
+    --green-tint: #ecfdf3;
+    --slate-tint: #f1f5f9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg-page);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-primary);
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+  .slide-container {
+    width: 1333px;
+    height: 750px;
+    background: var(--slide-bg);
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    padding: 30px 44px 22px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .kicker {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--border-line);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+  .slide-header h1 {
+    font-size: 33px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    line-height: 1.15;
+  }
+  .slide-header .meta-tag {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+  .content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 11px;
+  }
+  .takeaway-bar {
+    background: var(--slate-tint);
+    border-left: 5px solid var(--primary-blue);
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: 16.5px;
+    font-weight: 750;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+  }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; }
+  
+  .flow-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-line);
+    border-radius: 6px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+  .flow-card .num {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: var(--primary-blue);
+  }
+  .flow-card h3 {
+    font-size: 17.5px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .flow-card p {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  .banner-contrast {
+    background: var(--blue-tint);
+    border: 1.5px solid #b9d5f3;
+    padding: 9px 18px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    letter-spacing: 0.04em;
+  }
+
+  .pipe-step {
+    background: #ffffff;
+    border: 1.5px solid var(--primary-blue);
+    padding: 8px 6px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    white-space: nowrap;
+  }
+
+  .tier-box {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-line);
+    border-radius: 6px;
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tier-box.amber {
+    background: var(--amber-tint);
+    border-color: #fdba74;
+  }
+  .stat-val {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    line-height: 1;
+  }
+  .stat-val.amber { color: var(--amber-accent); }
+  .stat-val.green { color: var(--green-accent); }
+  .stat-label {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .scope-boundary {
+    border: 1.5px dashed var(--border-line);
+    border-radius: 8px;
+    padding: 12px 16px;
+    position: relative;
+  }
+  .scope-label {
+    position: absolute;
+    top: -11px;
+    left: 18px;
+    background: var(--slide-bg);
+    padding: 0 8px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+  }
+
+  .node-box {
+    background: #ffffff;
+    border: 1.5px solid var(--border-line);
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  .node-box.center-node {
+    border: 2px solid var(--amber-accent);
+    box-shadow: 0 4px 10px rgba(194, 65, 12, 0.08);
+  }
+  .node-box.blue-node {
+    border: 2px solid var(--primary-blue);
+    box-shadow: 0 4px 10px rgba(0, 82, 155, 0.08);
+  }
+  .node-title { font-size: 17px; font-weight: 800; color: var(--text-primary); }
+  .node-sub { font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-top: 2px; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .chip.live { background: var(--green-tint); color: var(--green-accent); border: 1.5px solid #86efac; }
+  .chip.not-deployed { background: var(--slate-tint); color: var(--text-secondary); border: 1.5px solid var(--border-line); }
+
+  .annot-box {
+    background: #ffffff;
+    border: 1.5px solid var(--green-accent);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14.5px;
+    line-height: 1.45;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide-container">
+  <div>
+    <div class="kicker">CAREER CONTINUUM &amp; SCOPE</div>
+    <div class="slide-header">
+      <h1>From Manufacturing Systems to Production AI Architecture</h1>
+      <div class="meta-tag">Che-Yu Wu &nbsp;|&nbsp; 1/6</div>
+    </div>
+  </div>
+  <div class="content-area">
+    <div class="grid-4">
+      <div class="flow-card">
+        <div class="num">01 FOUNDATION</div>
+        <h3>MES &amp; Production Systems</h3>
+        <p>24/7 manufacturing reality, data timing, and production workflow.</p>
+      </div>
+      <div class="flow-card">
+        <div class="num">02 INTEGRATION</div>
+        <h3>Reliability &amp; Automation / PLC</h3>
+        <p>System integration, failover validation, and production interfaces.</p>
+      </div>
+      <div class="flow-card">
+        <div class="num">03 APPLIED AI</div>
+        <h3>Production AI</h3>
+        <p>Model predictions meet physical execution constraints.</p>
+      </div>
+      <div class="flow-card">
+        <div class="num">04 ARCHITECTURE</div>
+        <h3>Architecture Thinking</h3>
+        <p>Explicit boundaries, controlled complexity, and reusable principles.</p>
+      </div>
+    </div>
+    <div class="tier-box" style="padding: 12px 18px;">
+      <div style="font-size: 16px; font-weight: 800; color: var(--primary-blue);">Why this role fits my path</div>
+      <div style="font-size: 15px; color: var(--text-primary); margin-top: 2px;">Extending my manufacturing-systems foundation into Production AI solution architecture.</div>
+    </div>
+  </div>
+  <div class="takeaway-bar">
+    Turning AI into systems that production can trust, operate, and scale.
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide-container">
+  <div>
+    <div class="kicker">PRODUCTION CREDIBILITY &amp; RELIABILITY</div>
+    <div class="slide-header">
+      <h1>Before AI: Make Production Systems Reliable</h1>
+      <div class="meta-tag">Che-Yu Wu &nbsp;|&nbsp; 2/6</div>
+    </div>
+  </div>
+  <div class="content-area">
+    <div class="banner-contrast">
+      REDUNDANCY &nbsp;≠&nbsp; VALIDATED FAILOVER BEHAVIOR
+    </div>
+    <div class="grid-4" style="margin: 2px 0;">
+      <div class="pipe-step">1. ASSUMPTION</div>
+      <div class="pipe-step">2. EXPLICIT REQUIREMENT</div>
+      <div class="pipe-step">3. SWITCHING VALIDATION</div>
+      <div class="pipe-step">4. PRODUCTION VERIFICATION</div>
+    </div>
+    <div class="grid-3">
+      <div class="flow-card">
+        <h3>MES Modernization</h3>
+        <p style="font-size: 15px; font-weight: 750; color: var(--text-primary); margin-top: 3px;">Hidden assumption → explicit switching requirement</p>
+        <p>Aligned validation scenarios with Hitachi.</p>
+      </div>
+      <div class="flow-card">
+        <h3>Maintainability</h3>
+        <p style="font-size: 15px; font-weight: 750; color: var(--text-primary); margin-top: 3px;">Proprietary / EOL dependency → maintainable infra</p>
+        <p>Standard servers · TCP/IP · Fiber</p>
+      </div>
+      <div class="flow-card">
+        <h3>PSS Rebuild</h3>
+        <p style="font-size: 15px; font-weight: 750; color: var(--text-primary); margin-top: 3px;">Data structure &amp; timing → flexible operator views</p>
+        <p>Supports changing reporting and viewing needs.</p>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway-bar">
+    Delivered only after: Cold Run → Hot Run → Production Verification
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide-container">
+  <div>
+    <div class="kicker">SOLUTION JUDGMENT &amp; SCOPE DISCIPLINE</div>
+    <div class="slide-header">
+      <h1>I Start from the Production Decision — Not the Model</h1>
+      <div class="meta-tag">Che-Yu Wu &nbsp;|&nbsp; 3/6</div>
+    </div>
+  </div>
+  <div class="content-area grid-2">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div class="flow-card" style="padding: 10px 14px;">
+        <div class="num">1. PRODUCTION DECISION</div>
+        <div style="font-size: 15px; font-weight: 750;">What production decision are we trying to improve?</div>
+      </div>
+      <div class="flow-card" style="padding: 10px 14px;">
+        <div class="num">2. DETERMINISTIC SOLUTION?</div>
+        <div style="font-size: 15px; font-weight: 750;">Can deterministic logic solve it reliably?</div>
+        <div style="font-size: 14px; color: var(--text-secondary); margin-top: 2px;">Rules · MES · Automation / PLC</div>
+      </div>
+      <div class="flow-card" style="padding: 10px 14px;">
+        <div class="num">3. ADDITIONAL AI VALUE?</div>
+        <div style="font-size: 15px; font-weight: 750;">Does AI create meaningful additional value?</div>
+      </div>
+      <div class="flow-card" style="padding: 10px 14px;">
+        <div class="num">4. LIFECYCLE COMPLEXITY?</div>
+        <div style="font-size: 15px; font-weight: 750;">Does the value justify added model, interface &amp; lifecycle complexity?</div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px; justify-content: center;">
+      <div class="flow-card" style="border-left: 5px solid var(--text-secondary); padding: 14px 16px;">
+        <h3 style="color: var(--text-primary); font-size: 18.5px;">Deterministic First</h3>
+        <p style="font-size: 14.5px;">Use simpler, deterministic logic when it reliably solves the production problem.</p>
+      </div>
+      <div class="flow-card" style="border-left: 5px solid var(--primary-blue); background: var(--blue-tint); padding: 14px 16px;">
+        <h3 style="color: var(--primary-blue); font-size: 18.5px;">AI with Boundaries</h3>
+        <p style="font-size: 14.5px;">Use AI only when its value justifies the added model, interface, and lifecycle complexity.</p>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway-bar">
+    If AI adds more complexity than value, I would not use it.
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide-container">
+  <div>
+    <div class="kicker">TECHNICAL CASE 1 — EDGE-TRIMMING OPTIMIZATION</div>
+    <div class="slide-header">
+      <h1>When a Good Model Meets Physical Reality</h1>
+      <div class="meta-tag">Che-Yu Wu &nbsp;|&nbsp; 4/6</div>
+    </div>
+  </div>
+  <div class="content-area" style="gap: 10px;">
+    <!-- Tier 1: Model Layer -->
+    <div class="tier-box">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div class="stat-label">Model Layer</div>
+          <div style="font-size: 14px; color: var(--text-secondary); margin-top: 2px;">Historical data analysis &amp; model comparison</div>
+        </div>
+        <div style="display: flex; gap: 36px; align-items: center;">
+          <div>
+            <div class="stat-val">~20K</div>
+            <div class="stat-label">Records</div>
+          </div>
+          <div style="font-size: 16px; font-weight: 800; color: var(--primary-blue);">
+            Comparison ➔ XGBoost
+          </div>
+          <div style="text-align: right;">
+            <div class="stat-val">~99.8%</div>
+            <div class="stat-label">Model Prediction Correctness</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tier 2: Physical Reality -->
+    <div class="tier-box amber">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 18px;">⚠️</span>
+          <div>
+            <div class="stat-label" style="color: var(--amber-accent);">Physical Reality Barrier</div>
+            <div style="font-size: 16.5px; font-weight: 800; color: var(--amber-accent); margin-top: 1px;">Equipment Resolution ≈ 1 mm</div>
+          </div>
+        </div>
+        <div style="font-size: 14.5px; font-weight: 750; color: var(--amber-accent);">
+          Material Properties &nbsp;·&nbsp; Order Requirements &nbsp;·&nbsp; Equipment Condition
+        </div>
+      </div>
+    </div>
+    <!-- Tier 3: Execution Layer -->
+    <div class="tier-box" style="border-left: 5px solid var(--green-accent);">
+      <div>
+        <div class="stat-label" style="color: var(--green-accent);">Execution Layer · OEM Baseline + AI Compensation</div>
+        <div style="font-size: 14px; color: var(--text-secondary); margin-top: 2px;">OEM calculation remains; AI adds compensation within production bounds.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1.1fr 1.1fr 1.4fr; gap: 16px; margin-top: 4px; align-items: center;">
+        <div style="background: var(--green-tint); padding: 8px 12px; border-radius: 6px; border: 1.5px solid #bbf7d0;">
+          <div class="stat-val green" style="font-size: 27px;">~93.8%</div>
+          <div class="stat-label" style="color: var(--green-accent); font-size: 14px;">Online Range Validation</div>
+        </div>
+        <div style="background: var(--green-tint); padding: 8px 12px; border-radius: 6px; border: 1.5px solid #bbf7d0;">
+          <div class="stat-val green" style="font-size: 27px;">~NT$2M / yr</div>
+          <div class="stat-label" style="color: var(--green-accent); font-size: 14px;">Estimated Site Benefit</div>
+        </div>
+        <div style="background: var(--slate-tint); padding: 10px 12px; border-radius: 6px; border: 1.5px solid var(--border-line); text-align: center; font-size: 14px; font-weight: 800; color: var(--primary-blue);">
+          HMI Advisory ➔ Field Validation ➔ Adoption
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway-bar">
+    A good prediction is not yet a production decision.
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide-container">
+  <div>
+    <div class="kicker">TECHNICAL CASE 2 — PRODUCTION INTEGRATION ARCHITECTURE</div>
+    <div class="slide-header">
+      <div>
+        <h1>Turning an External AI Model into a Production Solution</h1>
+        <div style="font-size: 16.5px; font-weight: 800; color: var(--amber-accent); margin-top: 2px;">Data Path ≠ Control Path</div>
+      </div>
+      <div class="meta-tag">Che-Yu Wu &nbsp;|&nbsp; 5/6</div>
+    </div>
+  </div>
+  <div class="content-area">
+    <div class="scope-boundary" style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="scope-label">Production Integration Boundary</div>
+      
+      <!-- Top: External Scope -->
+      <div style="display: flex; justify-content: center;">
+        <div class="node-box" style="width: 520px; border-style: dashed; background: var(--slate-tint); padding: 8px 14px;">
+          <div style="font-size: 14px; font-weight: 800; color: var(--text-secondary); letter-spacing: 0.05em;">EXTERNAL R&amp;D SCOPE</div>
+          <div class="node-title" style="font-size: 17px;">External AI Model</div>
+          <div class="node-sub" style="font-size: 14px;">Model &amp; Algorithm Ownership &nbsp;·&nbsp; Provides Correction</div>
+        </div>
+      </div>
+
+      <!-- Mid Paths -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 0 24px;">
+        <!-- Left: Data Path -->
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-size: 14px; font-weight: 800; color: var(--primary-blue);">▲ DATA PATH</div>
+          <div class="node-box blue-node">
+            <div class="node-title">Designated Database</div>
+            <div class="node-sub">▲ Feeds Production Context to External Model</div>
+          </div>
+          <div style="font-size: 14px; color: var(--primary-blue); font-weight: 750; text-align: center;">
+            ▲ Actual State &amp; Feedback from Automation
+          </div>
+        </div>
+
+        <!-- Right: Control Path -->
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-size: 14px; font-weight: 800; color: var(--amber-accent);">▼ CONTROL PATH · AI Correction</div>
+          <div class="node-box center-node">
+            <div class="node-title">Automation / PLC</div>
+            <div class="node-sub" style="color: var(--amber-accent); font-weight: 800;">Updates Existing 20 Control Setting Values</div>
+          </div>
+          <div style="font-size: 14px; color: var(--amber-accent); font-weight: 750; text-align: center;">
+            ▼ Executes correction through existing control setting values
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Equipment -->
+      <div class="node-box" style="background: #f1f5f9; border-color: #94a3b8; padding: 8px;">
+        <div class="node-title" style="font-size: 16px;">Production Equipment</div>
+      </div>
+
+      <!-- Annotation Bar -->
+      <div class="annot-box">
+        <strong style="color: var(--primary-blue); font-size: 14.5px;">• Direct Control Path:</strong> Avoids an unnecessary control loop through MES.<br/>
+        <strong style="color: var(--green-accent); font-size: 14.5px;">• Failure Boundary:</strong> PLC timeout detection; OEM baseline and existing control protections remain available.
+      </div>
+    </div>
+  </div>
+  <div class="takeaway-bar">
+    AI can lose optimization — but it must never take away basic production capability.
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide-container">
+  <div>
+    <div class="kicker">SYSTEM BOUNDARIES &amp; REUSABLE METHODOLOGY</div>
+    <div class="slide-header">
+      <h1>From Projects to Architecture Thinking</h1>
+      <div class="meta-tag">Che-Yu Wu &nbsp;|&nbsp; 6/6</div>
+    </div>
+  </div>
+  <div class="content-area grid-2">
+    <!-- Left: Architecture Flow -->
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div class="flow-card" style="border: 1.5px dashed var(--border-line); padding: 10px 14px;">
+        <div class="num">CAMERA-SIDE NETWORK (~100 CAMERAS)</div>
+        <div style="font-size: 15.5px; font-weight: 800; color: var(--primary-blue); margin-top: 2px;">
+          Camera Server / Storage <span style="font-size: 14px; font-weight: 600; color: var(--text-secondary);">(Integration Endpoint)</span>
+        </div>
+      </div>
+      
+      <div style="display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: var(--text-secondary); background: var(--slate-tint); padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border-line);">
+        <span>▼</span> ──[ Moxa Industrial Firewall / NAT · Restricts Raw Video ]── <span>▼</span>
+      </div>
+
+      <div class="flow-card" style="padding: 10px 14px;">
+        <div class="num">MES / PSS NETWORK</div>
+        <div style="font-size: 14.5px; font-weight: 750; color: var(--text-primary); margin-top: 2px;">
+          Communicates with the Camera Server endpoint only.
+        </div>
+      </div>
+
+      <div class="flow-card" style="background: var(--blue-tint); border-color: #b9d5f3; padding: 10px 14px;">
+        <div style="font-size: 14px; font-weight: 900; color: var(--primary-blue); letter-spacing: 0.05em;">PRODUCTION CONTEXT INDEX</div>
+        <div style="font-size: 15.5px; font-weight: 800; color: var(--primary-blue); margin-top: 2px;">
+          Coil ID &nbsp;·&nbsp; Timestamp &nbsp;·&nbsp; Area ID &nbsp;·&nbsp; Camera ID
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 2px;">
+        <span class="chip live">LIVE: Retrieval &amp; Context Indexing</span>
+        <span class="chip not-deployed">NOT DEPLOYED: AI Recognition Model</span>
+      </div>
+    </div>
+
+    <!-- Right: 3 Principles -->
+    <div style="display: flex; flex-direction: column; gap: 10px; justify-content: center;">
+      <div style="font-size: 15px; font-weight: 900; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 0.05em;">
+        Principles I Carry Forward
+      </div>
+      <div class="flow-card" style="border-left: 5px solid var(--primary-blue); padding: 12px 16px;">
+        <h3>1. Context</h3>
+        <p>Connect data to production context.</p>
+      </div>
+      <div class="flow-card" style="border-left: 5px solid var(--primary-blue); padding: 12px 16px;">
+        <h3>2. Boundary</h3>
+        <p>Keep external systems useful, but bounded.</p>
+      </div>
+      <div class="flow-card" style="border-left: 5px solid var(--primary-blue); padding: 12px 16px;">
+        <h3>3. Reuse</h3>
+        <p>Reuse architecture contracts — not site implementations.</p>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway-bar">
+    Turning AI from a demonstration into a solution that production can trust, maintain, and scale — step by step.
+  </div>
+</div>
+
+</body>
+</html>
