@@ -144,8 +144,8 @@ allow_javascript = false
 # 執行完整測試套件
 pytest -v
 
-# 執行 Corning 6 頁黃金回歸測試
-pytest tests/test_corning_regression.py -v
+# 執行 企業 6 頁簡報 頁黃金回歸測試
+pytest tests/test_enterprise_deck_regression.py -v
 ```
 
 ---

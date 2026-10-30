@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Corning Applied AI Solution Architect (76964) Presentation Generator
+AdvancedTech Applied AI Solution Architect (2026) Presentation Generator
 Strict Typography Rule: Minimum Font Size = 14pt, Scaled Proportional Hierarchy
 Format: 16:9 Widescreen (13.333" x 7.5")
 """
@@ -24,7 +24,7 @@ COLOR_BG = RGBColor(248, 250, 252)          # #F8FAFC Canvas Background
 COLOR_WHITE = RGBColor(255, 255, 255)       # #FFFFFF Card Background
 COLOR_CARD_BORDER = RGBColor(203, 213, 225) # #CBD5E1 Slate Border
 
-COLOR_PRIMARY_BLUE = RGBColor(0, 82, 155)   # #00529B Corning Blue / Primary
+COLOR_PRIMARY_BLUE = RGBColor(0, 82, 155)   # #00529B AdvancedTech Blue / Primary
 COLOR_BLUE_TINT = RGBColor(238, 244, 251)   # #EEF4FB Blue Tint Fill
 COLOR_BLUE_BORDER = RGBColor(185, 213, 243) # #B9D5F3 Light Blue Border
 
@@ -42,7 +42,7 @@ COLOR_GREEN_BORDER = RGBColor(187, 247, 208)# #BBF7D0 Green Border
 COLOR_SLATE_TINT = RGBColor(241, 245, 249)  # #F1F5F9 Slate Tint Fill
 
 
-def build_corning_deck_min14(output_paths=None):
+def build_enterprise_deck_min14(output_paths=None):
     prs = Presentation()
     prs.slide_width = Inches(13.333)
     prs.slide_height = Inches(7.5)
@@ -939,11 +939,11 @@ def build_corning_deck_min14(output_paths=None):
 
 if __name__ == "__main__":
     paths = [
-        r"C:\Users\Y6T2\.gemini\antigravity\scratch\Corning_76964_Interview_Deck.pptx",
-        r"C:\Users\Y6T2\.gemini\antigravity\scratch\Corning_76964_面試簡報_20260901.pptx",
-        r"C:\Users\Y6T2\Google Drive\ANTIGRAVITY\2026-09-01_Corning_76964_簡報轉換工具\Corning_76964_Interview_Deck_20260901.pptx",
-        r"C:\Users\Y6T2\Google Drive\ANTIGRAVITY\2026-09-01_Corning_76964_簡報轉換工具\Corning_76964_面試簡報_20260901.pptx",
-        r"G:\我的雲端硬碟\2026-09-01_Corning_76964_簡報轉換工具\Corning_76964_Interview_Deck_20260901.pptx",
-        r"G:\我的雲端硬碟\2026-09-01_Corning_76964_簡報轉換工具\Corning_76964_面試簡報_20260901.pptx"
+        "output/enterprise_deck.pptx",
+        "output/enterprise_deck.pptx",
+        "output/enterprise_deck.pptx",
+        "output/enterprise_deck.pptx",
+        "output/enterprise_deck.pptx",
+        "output/enterprise_deck.pptx"
     ]
-    build_corning_deck_min14(paths)
+    build_enterprise_deck_min14(paths)

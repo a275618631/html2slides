@@ -1,5 +1,5 @@
 """
-Test Corning 6-Slide Regression Fixture (deck_20260901.html).
+Test Enterprise 6-Slide Regression Fixture (deck_sample.html).
 """
 
 import os
@@ -14,9 +14,9 @@ from html2slides.pptx_renderer import PPTXRenderer
 from html2slides.validator import PresentationValidator
 
 
-def test_corning_6slide_regression(tmp_path):
-    fixture_path = os.path.abspath("examples/corning/deck_20260901.html")
-    assert os.path.exists(fixture_path), f"Corning HTML fixture not found at {fixture_path}"
+def test_enterprise_6slide_regression(tmp_path):
+    fixture_path = os.path.abspath("examples/enterprise_ai_deck/deck_sample.html")
+    assert os.path.exists(fixture_path), f"Enterprise HTML fixture not found at {fixture_path}"
 
     config = Config()
     config.deck.slide_selector = ".slide-container"
@@ -32,7 +32,7 @@ def test_corning_6slide_regression(tmp_path):
     assert len(deck_model.slides) == 6, f"Expected 6 slides, got {len(deck_model.slides)}"
 
     # 2. Rendering
-    out_pptx = str(tmp_path / "corning_regression.pptx")
+    out_pptx = str(tmp_path / "enterprise_regression.pptx")
     renderer = PPTXRenderer(deck_model)
     renderer.render(out_pptx)
 

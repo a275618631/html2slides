@@ -23,7 +23,7 @@ def test_google_slides_validation_structure():
     # Mock Presentations.get response
     mock_pres_response = {
         "presentationId": "test_id_123",
-        "title": "Corning Interview Deck",
+        "title": "Enterprise Solution Deck",
         "slides": [
             {
                 "pageElements": [

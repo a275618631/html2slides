@@ -6,7 +6,7 @@
 - **python-pptx 版本**：1.0.2
 - **Playwright 版本**：1.62.0 (Chromium 151.0)
 - **pytest 版本**：9.1.1
-- **專案路徑**：`/Users/cheyu/Documents/antigravity/html2slides`
+- **專案路徑**：`<LOCAL_WORKSPACE_PATH>`
 
 ---
 
@@ -38,7 +38,7 @@ platform darwin -- Python 3.11.4, pytest-9.1.1, pluggy-1.6.0
 collected 10 items
 
 tests/test_alignment.py::test_paragraph_alignment PASSED                 [ 10%]
-tests/test_corning_regression.py::test_corning_6slide_regression PASSED  [ 20%]
+tests/test_enterprise_regression.py::test_enterprise_6slide_regression PASSED  [ 20%]
 tests/test_extractor.py::test_flex_and_grid_coordinates PASSED           [ 30%]
 tests/test_fonts.py::test_font_modes PASSED                              [ 40%]
 tests/test_fonts.py::test_cjk_detection_and_ooxml PASSED                 [ 50%]
@@ -55,7 +55,7 @@ tests/test_pptx.py::test_shapes_and_cards_rendering PASSED               [100%]
 
 ## 4. 驗證細項清單
 
-- **CORNING REGRESSION**：`PASS` (6 頁完整生成，主要文字、形狀與層級均正確)
+- **enterprise REGRESSION**：`PASS` (6 頁完整生成，主要文字、形狀與層級均正確)
 - **POWERPOINT EDITABILITY**：`PASS` (非單張截圖，文字與卡片皆為 PowerPoint 原生物件)
 - **ALIGNMENT**：
   - `LEFT`：`PASS` (112 個段落)
@@ -74,14 +74,14 @@ tests/test_pptx.py::test_shapes_and_cards_rendering PASSED               [100%]
 
 ## 5. 使用者交付檔案轉換執行
 
-- **輸入檔案**：`/Users/cheyu/Downloads/gemini-code-1788274918437.html`
+- **輸入檔案**：`<LOCAL_WORKSPACE_PATH>`
 - **轉檔輸出**：
-  1. `output/Corning_76964_Interview_Deck_20260901_universal.pptx`
+  1. `output/enterprise_deck_universal.pptx`
   2. `output/conversion_report.json`
 - **Drive 備份路徑**：
-  - `/Users/cheyu/Library/CloudStorage/GoogleDrive-a275618631@gmail.com/我的雲端硬碟/CODEX/2026-09-01_Corning_76964_簡報轉換工具/Corning_76964_Interview_Deck_20260901_universal.pptx`
-  - `/Users/cheyu/Library/CloudStorage/GoogleDrive-a275618631@gmail.com/我的雲端硬碟/CODEX/2026-09-01_Corning_76964_簡報轉換工具/conversion_report_20260901.json`
-  - `/Users/cheyu/Library/CloudStorage/GoogleDrive-a275618631@gmail.com/我的雲端硬碟/CODEX/2026-09-01_Corning_76964_簡報轉換工具/deck_20260901_v4_gemini.html`
+  - `<LOCAL_OUTPUT_PATH>
+  - `<LOCAL_OUTPUT_PATH>
+  - `<LOCAL_OUTPUT_PATH>
 
 ---
 
@@ -89,7 +89,7 @@ tests/test_pptx.py::test_shapes_and_cards_rendering PASSED               [100%]
 - [x] 清除所有 `<script>` 與 inline `on*` 事件處理器。
 - [x] 預設阻擋未經許可的遠端網路請求（包含外部 Web Fonts 與遠端圖片）。
 - [x] `.gitignore` 已嚴格配置阻擋 `credentials*.json`, `token*.json`, `.env`, `*.pptx`。
-- [x] 原 Corning 原始資料未被刪除或覆寫。
+- [x] 原 Enterprise 原始資料未被刪除或覆寫。
 
 ---
 
