@@ -1,8 +1,10 @@
 # html2slides
 
-> **Universal Editable HTML to PowerPoint (PPTX) and Native Google Slides Converter**
+> 將 HTML 簡報轉為可逐項編輯的 PowerPoint，並提供 Google Slides 匯入與結構檢查。
 
-`html2slides` 是一套通用、可重複使用、可測試的 HTML 簡報轉檔工具。不同於將每頁轉成截圖的傳統作法，`html2slides` 專注於 **Editable Mode**，透過 Headless Chromium 計算真實 CSS Layout (Flex/Grid/Absolute/Padding)，產出中介模型 (`DeckModel`)，再轉換為真正可在 PowerPoint 與 Google Slides 中個別編輯的 Shapes、TextBoxes、TextRuns 與 Images。
+有時候簡報已經用 HTML 排好，但交付時仍需要能編輯文字、形狀和圖片的 PowerPoint，而不是一張張截圖。`html2slides` 使用 Chromium 讀取排版資訊，產出中介模型（`DeckModel`），再轉成 PowerPoint 原生物件。也提供匯入 Google Slides 的選用流程。
+
+這是針對既有測試範例持續改進的轉檔工具；**並非所有 HTML/CSS 效果都能無損轉換**。字型、瀏覽器與 Office／Google Slides 的排版差異仍需逐份檢查。
 
 ---
 
@@ -13,15 +15,15 @@
   - 卡片與容器轉為原生 PowerPoint Shape (Rectangle, Rounded Rectangle, Solid Fill, Border, Left Accent Bar)。
   - 圖片轉為獨立可移動/縮放的 Picture Shape。
 - **真實瀏覽器排版計算**：
-  - 透過 Playwright Chromium 解析 Flexbox、CSS Grid、Absolute 定位、Padding 與 Margin，保證排版座標精準（誤差 < 0.03 inch）。
+  - 透過 Playwright Chromium 讀取 Flexbox、CSS Grid、Absolute 定位、Padding 與 Margin 等排版資訊。既有案例曾記錄小於 0.03 英吋的座標誤差；**這不是對所有 HTML 的普遍精度保證**。
 - **字型與 CJK 相容性**：
   - 支援 `preserve` (保留 CSS 字型)、`override` (全域強制指定) 與 `map` (字型對應表) 三種模式。
-  - 針對繁體中文/CJK 字元，集中以 OpenXML 底層標籤 (`a:ea`, `a:latin`, `a:cs`) 設置 East Asian Typeface，確保跨平台 Office 與 Google Slides 正確識別。
+  - 針對繁體中文／CJK 字元，集中以 OpenXML 標籤（`a:ea`、`a:latin`、`a:cs`）設定字型資訊，改善不同 Office 環境的字型識別；結果仍受接收端字型與匯入器影響。
 - **Selector Overrides**：
   - 支援在 `html2slides.toml` 中為特定 CSS selector 注入覆寫樣式。
 - **Google Slides 整合與回讀驗證**：
   - 透過最小權限 Google Drive API (`drive.file`) 自動將 PPTX 匯入並轉為原生 Google Slides。
-  - 自動回讀 Google Slides API 驗證頁面元素結構，確保產出品質。
+  - 透過 Google Slides API 回讀頁面元素結構，檢查轉換結果；結構檢查不等於視覺排版完全一致。
 - **嚴格安全性**：
   - 預設清除 `<script>` 與 inline `on*` 事件。
   - 預設禁止外部未授權網路連線 (`--allow-network` opt-in)。
@@ -139,6 +141,8 @@ allow_javascript = false
 ---
 
 ## 測試與驗證
+
+專案保留自動化測試與[歷史實作報告](IMPLEMENTATION_RESULT.md)；報告中的 10/10 PASS 與座標誤差數據屬當時環境及測試範例，不是本次重新執行。Google Slides 的 API 結構測試也不等於所有實際帳戶、字型及佈景都完成端到端驗收。
 
 ```bash
 # 執行完整測試套件
