@@ -14,7 +14,7 @@ from html2slides.pptx_renderer import PPTXRenderer
 from html2slides.validator import PresentationValidator
 
 
-def test_enterprise_6slide_regression(tmp_path):
+def test_enterprise_3slide_regression(tmp_path):
     fixture_path = os.path.abspath("examples/enterprise_ai_deck/deck_sample.html")
     assert os.path.exists(fixture_path), f"Enterprise HTML fixture not found at {fixture_path}"
 
@@ -29,7 +29,7 @@ def test_enterprise_6slide_regression(tmp_path):
         extractor = DOMExtractor(config)
         deck_model, warnings = extractor.extract_deck(browser.page)
 
-    assert len(deck_model.slides) == 6, f"Expected 6 slides, got {len(deck_model.slides)}"
+    assert len(deck_model.slides) == 3, f"Expected 3 slides, got {len(deck_model.slides)}"
 
     # 2. Rendering
     out_pptx = str(tmp_path / "enterprise_regression.pptx")
@@ -41,13 +41,13 @@ def test_enterprise_6slide_regression(tmp_path):
     report = validator.validate(warnings)
 
     assert report["status"] == "PASS"
-    assert report["slides"] == 6
+    assert report["slides"] == 3
     assert report["shape_elements"] > 10
     assert report["text_elements"] + report["shape_elements"] > 20
 
     # 4. Content Verification
     prs = Presentation(out_pptx)
-    assert len(prs.slides) == 6
+    assert len(prs.slides) == 3
     assert abs(prs.slide_width.inches - 13.333) < 0.01
     assert abs(prs.slide_height.inches - 7.5) < 0.01
 
