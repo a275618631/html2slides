@@ -89,7 +89,7 @@ pytest -v
 pytest tests/test_corning_regression.py -v
 ```
 
-這些命令是專案提供的測試入口；執行時需要 Chromium 與相關 Python 套件。本次 README 調整沒有重新執行測試。
+執行測試時需要 Chromium 和相關 Python 套件；測試內容與預期結果可直接對照原始測試程式。
 
 ## 適用情境
 
