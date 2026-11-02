@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "html2slides"
+version = "0.1.0"
+description = "Universal Editable HTML to PowerPoint (PPTX) and Google Slides Converter"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Che-Yu Wu" }
+]
+dependencies = [
+    "python-pptx>=1.0.0",
+    "playwright>=1.40.0",
+    "pillow>=10.0.0",
+    "beautifulsoup4>=4.12.0",
+]
+
+[project.optional-dependencies]
+google = [
+    "google-api-python-client>=2.100.0",
+    "google-auth-oauthlib>=1.1.0",
+    "google-auth-httplib2>=0.2.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[project.scripts]
+html2slides = "html2slides.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

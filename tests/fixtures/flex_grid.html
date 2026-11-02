@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  .slide {
+    width: 1280px;
+    height: 720px;
+    background-color: #f8fafc;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  .flex-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+  .flex-col {
+    flex: 1;
+    height: 140px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    height: 350px;
+  }
+  .grid-cell {
+    background-color: #ffffff;
+    border: 1.5px solid #00529b;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="flex-row">
+    <div class="flex-col"><h3>Col 1</h3><p>Flex item 1</p></div>
+    <div class="flex-col"><h3>Col 2</h3><p>Flex item 2</p></div>
+    <div class="flex-col"><h3>Col 3</h3><p>Flex item 3</p></div>
+  </div>
+  <div class="grid-2x2">
+    <div class="grid-cell"><h3>Cell (1,1)</h3><p>Grid Cell 1</p></div>
+    <div class="grid-cell"><h3>Cell (1,2)</h3><p>Grid Cell 2</p></div>
+    <div class="grid-cell"><h3>Cell (2,1)</h3><p>Grid Cell 3</p></div>
+    <div class="grid-cell"><h3>Cell (2,2)</h3><p>Grid Cell 4</p></div>
+  </div>
+</div>
+</body>
+</html>
